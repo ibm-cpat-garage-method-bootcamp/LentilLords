@@ -13,40 +13,10 @@ import Header from "../pattern-components/Header";
 import "../pattern-components/patterns.scss";
 
 class SimpleList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedRow: 0,
-      groceryList: ["Milk", "Eggs", "Potatoes", "Kale"],
-      newItem: ''
-    };
-    this.handleItemSubmit = this.handleItemSubmit.bind(this);
-    this.handleItemChange = this.handleItemChange.bind(this);
-
-  }
 
   onRowClick = id => {
-    this.setState({ selectedRow: id });
+    // this.setState({ selectedRow: id });
   };
-
-    handleItemSubmit(event) {
-      event.preventDefault();
-      let newList = this.state.groceryList;
-      newList.push(this.state.newItem);
-
-      this.setState({groceryList: newList, newItem: ''})
-    }
-
-  handleItemChange(event) {
-    // let newList = this.state.data;
-    // newList.push(event.target.value);
-    // console.log("this is the new item:", event.target.value);
-    this.setState({newItem: event.target.value});
-
-  }
-
-
-
 
   renderRow = (row, id) => {
     return (
@@ -58,7 +28,7 @@ class SimpleList extends Component {
             title="row-0"
             name="row-0"
             //defaultChecked={this.state.selectedRow === id}
-            checked={this.state.selectedRow === id}
+            // checked={this.state.selectedRow === id}
           />
           <StructuredListCell>
             <Icon
@@ -76,7 +46,7 @@ class SimpleList extends Component {
   };
 
   render() {
-    const data = this.state.groceryList;
+    const data = this.props.groceryList;
     return (
       <div className="bx--grid pattern-container">
         <Header
@@ -101,12 +71,27 @@ class SimpleList extends Component {
                 })}
               </StructuredListBody>
             </StructuredListWrapper>
-            <form onSubmit={this.handleItemSubmit}>
-              <label>
-                Grocery Item:
-                <input type="text" value={this.state.newItem} onChange={this.handleItemChange} />
-              </label>
-              <input type="submit" value="Submit" />
+            <form onSubmit={this.props.handleItemSubmit}>
+              <div class="bx--form-item">
+                <label className="bx--label">
+                  <div class="bx--form-item">
+                    <input
+                      type="text"
+                      value={this.props.newItem}
+                      onChange={this.props.handleItemChange}
+                      className="bx--text-input"
+                      placeholder="Add Gorcery Item Here..."
+                    />
+                  </div>
+                </label>
+              </div>
+              <div class="bx--form-item">
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="bx--btn bx--btn--primary"
+                />
+              </div>
             </form>
           </div>
         </div>
