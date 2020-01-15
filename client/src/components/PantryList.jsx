@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StructuredListWrapper,
   StructuredListRow,
@@ -7,46 +7,41 @@ import {
   StructuredListBody,
   StructuredListInput,
   Icon
-} from "carbon-components-react";
-import { iconCheckmarkSolid } from "carbon-icons";
-import Header from "../pattern-components/Header";
-import "../pattern-components/patterns.scss";
+} from 'carbon-components-react';
+import { iconCheckmarkSolid } from 'carbon-icons';
+import Header from '../pattern-components/Header';
+import '../pattern-components/patterns.scss';
 
 class SimpleList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedRow: 0,
-      groceryList: ["Milk", "Eggs", "Potatoes", "Kale"],
+      groceryList: ['Milk', 'Eggs', 'Potatoes', 'Kale'],
       newItem: ''
     };
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.handleItemChange = this.handleItemChange.bind(this);
-
   }
 
   onRowClick = id => {
     this.setState({ selectedRow: id });
   };
 
-    handleItemSubmit(event) {
-      event.preventDefault();
-      let newList = this.state.groceryList;
-      newList.push(this.state.newItem);
+  handleItemSubmit(event) {
+    event.preventDefault();
+    let newList = this.state.groceryList;
+    newList.push(this.state.newItem);
 
-      this.setState({groceryList: newList, newItem: ''})
-    }
+    this.setState({ groceryList: newList, newItem: '' });
+  }
 
   handleItemChange(event) {
     // let newList = this.state.data;
     // newList.push(event.target.value);
     // console.log("this is the new item:", event.target.value);
-    this.setState({newItem: event.target.value});
-
+    this.setState({ newItem: event.target.value });
   }
-
-
-
 
   renderRow = (row, id) => {
     return (
@@ -89,9 +84,7 @@ class SimpleList extends Component {
               <StructuredListHead>
                 <StructuredListRow head>
                   <StructuredListCell head />
-                  <StructuredListCell head>
-                    Pantry Item
-                  </StructuredListCell>
+                  <StructuredListCell head>Pantry Item</StructuredListCell>
                 </StructuredListRow>
               </StructuredListHead>
 
@@ -102,11 +95,26 @@ class SimpleList extends Component {
               </StructuredListBody>
             </StructuredListWrapper>
             <form onSubmit={this.handleItemSubmit}>
-              <label>
-                Grocery Item:
-                <input type="text" value={this.state.newItem} onChange={this.handleItemChange} />
-              </label>
-              <input type="submit" value="Submit" />
+              <div class="bx--form-item">
+                <label className="bx--label">
+                  <div class="bx--form-item">
+                    <input
+                      type="text"
+                      value={this.state.newItem}
+                      onChange={this.handleItemChange}
+                      className="bx--text-input"
+                      placeholder="Add Gorcery Item Here..."
+                    />
+                  </div>
+                </label>
+              </div>
+              <div class="bx--form-item">
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="bx--btn bx--btn--primary"
+                />
+              </div>
             </form>
           </div>
         </div>
