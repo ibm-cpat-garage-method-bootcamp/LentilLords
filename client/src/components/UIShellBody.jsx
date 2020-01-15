@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SimpleList from "../pattern-components/SimpleList";
 import BasicPage from "../pattern-components/BasicPage";
+import PantryList from "./PantryList";
 import "../pattern-components/patterns.scss";
 
 class UIShellBody extends Component {
@@ -15,7 +16,7 @@ class UIShellBody extends Component {
     const PatternName = this.components[curScreen];
     return (
       <div className="pattern-container">
-        <PatternName showDescription={true} />
+        <PantryList></PantryList>
       </div>
     );
   }

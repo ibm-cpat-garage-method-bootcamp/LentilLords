@@ -7,7 +7,8 @@ import {
   SideNav,
   SideNavItems,
   SideNavMenu,
-  SideNavMenuItem
+  SideNavMenuItem,
+  PantryList
 } from "carbon-components-react/lib/components/UIShell/";
 import UIShellBody from "./UIShellBody";
 
