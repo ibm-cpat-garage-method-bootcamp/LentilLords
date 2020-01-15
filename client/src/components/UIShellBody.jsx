@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SimpleList from "../pattern-components/SimpleList";
 import BasicPage from "../pattern-components/BasicPage";
 import PantryList from "./PantryList";
+import axios from 'axios';
 import "../pattern-components/patterns.scss";
 
 class UIShellBody extends Component {
@@ -20,11 +21,24 @@ class UIShellBody extends Component {
   };
   defaultComponent = "Basic Page";
 
+  componentDidMount(){
+    axios.get('http://localhost:3001/groceryList').then(res => {
+      console.log("This is makign the api call", res.data)
+      this.setState({groceryList: res.data})
+    })
+  }
+
   handleItemSubmit(event) {
     event.preventDefault();
     let newList = this.state.groceryList;
     newList.push(this.state.newItem);
-    this.setState({ groceryList: newList, newItem: '' });
+    this.setState({ groceryList: newList});
+
+    axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
+      .then(_ => {
+        console.log('oi')
+        this.setState({newItem: ''})
+      })
   }
 
   handleItemChange(event) {
