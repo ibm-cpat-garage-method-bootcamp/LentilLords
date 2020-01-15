@@ -28,7 +28,7 @@ function wordWrapper(s, n) {
         }
     }
     return s.join("");
-}
+};
 
 // console.log(wordWrapper('aas d fas df', 1));
 
