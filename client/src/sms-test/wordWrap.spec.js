@@ -1,10 +1,10 @@
 
 function wordWrapper(s, n) { 
     s = s.split(/(\s+)/) // Convert to array
-    let prev = 0
-    let total = 0
+    let prev = 0 // Pointer
+    let total = 0 // Counter
 
-    if (s.length === 1) 
+    if (s.length === 1) // For one "word"
     {
         for (let i in s[0]) {
             if ( total >= n ) {
@@ -16,7 +16,7 @@ function wordWrapper(s, n) {
             prev = i;
         };
     }
-    else 
+    else // For multiple words:
     {
         for ( let i in s ) {
             total += s[i].length;
