@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SimpleList from "../pattern-components/SimpleList";
 import BasicPage from "../pattern-components/BasicPage";
 import PantryList from "./PantryList";
+import ShoppingList from "./ShoppingList"
 import "../pattern-components/patterns.scss";
 
 class UIShellBody extends Component {
@@ -37,10 +38,14 @@ class UIShellBody extends Component {
     return (
       <div className="pattern-container">
         <PantryList 
-        groceryList={this.state.groceryList}
-        newItem={this.state.newItem}
-        handleItemSubmit={this.handleItemSubmit}
-        handleItemChange={this.handleItemChange}/>
+          groceryList={this.state.groceryList}
+          newItem={this.state.newItem}
+          handleItemSubmit={this.handleItemSubmit}
+          handleItemChange={this.handleItemChange}
+        />
+        <ShoppingList
+          groceryList={this.state.groceryList}
+        />
       </div>
     );
   }
