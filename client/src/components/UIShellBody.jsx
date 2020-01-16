@@ -54,11 +54,19 @@ class UIShellBody extends Component {
   }
 
   handleItemSubmit(event) {
-    event.preventDefault();
-      let newList = this.state.groceryList;
-    const newItem = {name: this.state.newItem, quantity: 1};
+    event.preventDefault(); // Prevent submit button from working by default
 
+    const newList = this.state.groceryList;
+    let zeroOrOne = Math.round(Math.random()); // Quantity becomes 0 or 1, randomly...
 
+    let aisleValue = Math.floor(Math.random() * 100) + 1; // Quantity becomes between 0 and 100
+
+    const newItem = { 
+      name: this.state.newItem, 
+      quantity: zeroOrOne,
+      selected: null,
+      aisle: aisleValue
+    };
 
     if(this.state.newItem !== ''){
       newList.push(newItem);
@@ -79,9 +87,9 @@ class UIShellBody extends Component {
 
   handleDeleteItem(id) {
     console.log('im getting in the delete function')
-    let tempState = this.state.dummyData
+    let tempState = this.state.groceryList
       tempState.splice(id, 1)
-      this.setState({ dummyData: tempState })
+      this.setState({ groceryList: tempState })
       }
 
     

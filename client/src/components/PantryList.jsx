@@ -52,8 +52,8 @@ class SimpleList extends Component {
   };
 
   render() {
-    const {groceryList, dummyData} = this.props
-    const data = dummyData;
+    const {groceryList} = this.props
+    const data = groceryList;
     return (
       <div className="bx--grid pattern-container">
         <Header

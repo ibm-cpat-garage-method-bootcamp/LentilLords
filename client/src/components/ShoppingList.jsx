@@ -45,8 +45,13 @@ class SimpleList extends Component {
         </div>
 
         <StructuredListCell className="simple-list-row">
-          {row}
+          {row.name}
         </StructuredListCell>
+
+        <StructuredListCell className="simple-list-row">
+          {row.aisle}
+        </StructuredListCell>
+        
       </StructuredListRow>
     );
   };
@@ -70,12 +75,15 @@ class SimpleList extends Component {
                   <StructuredListCell head>
                     Shopping Item
                   </StructuredListCell>
+                  <StructuredListCell head>
+                    Aisle
+                  </StructuredListCell>
                 </StructuredListRow>
               </StructuredListHead>
 
               <StructuredListBody>
-                {dummyData.map((row, i) => (
-                  !row.quantity ? this.renderRow(row.name, i) : null
+                {groceryList.map((row, i) => (
+                  !row.quantity ? this.renderRow(row, i) : null
                 ))}
               </StructuredListBody>
             </StructuredListWrapper>
