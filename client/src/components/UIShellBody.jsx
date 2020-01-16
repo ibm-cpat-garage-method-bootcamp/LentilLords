@@ -16,17 +16,20 @@ class UIShellBody extends Component {
         {
           name: "Toasted Eggs",
           quantity: 1,
-          selected: false
+          selected: false,
+          aisle: 1
         },
         {
           name: "Fried Milk",
           quantity: 0,
-          selected: false
+          selected: false,
+          aisle: 4
         },
         {
           name: "Candied Steak",
           quantity: 0,
-          selected: false
+          selected: false,
+          aisle: 7
         }
       ]
     };
