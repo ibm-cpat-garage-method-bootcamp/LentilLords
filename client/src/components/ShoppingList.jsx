@@ -52,7 +52,7 @@ class SimpleList extends Component {
   };
 
   render() {
-    const {groceryList} = this.props;
+    const {groceryList, dummyData} = this.props;
 
     return (
       <div className="bx--grid pattern-container">
@@ -74,9 +74,9 @@ class SimpleList extends Component {
               </StructuredListHead>
 
               <StructuredListBody>
-                {groceryList.map((row, i) => {
-                  return this.renderRow(row.name, i);
-                })}
+                {dummyData.map((row, i) => (
+                  !row.quantity ? this.renderRow(row.name, i) : null
+                ))}
               </StructuredListBody>
             </StructuredListWrapper>
           </div>

@@ -11,7 +11,24 @@ class UIShellBody extends Component {
     super(props);
     this.state = {
       groceryList: [],
-      newItem: ''
+      newItem: '',
+      dummyData: [
+        {
+          name: "Toasted Eggs",
+          quantity: 1,
+          selected: false
+        },
+        {
+          name: "Fried Milk",
+          quantity: 0,
+          selected: false
+        },
+        {
+          name: "Candied Steak",
+          quantity: 0,
+          selected: false
+        }
+      ]
     };
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.handleItemChange = this.handleItemChange.bind(this);
@@ -39,7 +56,7 @@ class UIShellBody extends Component {
 
     axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
       .then(_ => {
-        console.log('oi')
+        console.log('OI: Successfully posted to /storing :)')
         this.setState({newItem: ''})
       })
   }
@@ -62,6 +79,7 @@ class UIShellBody extends Component {
         />
         <ShoppingList
           groceryList={this.state.groceryList}
+          dummyData={this.state.dummyData}
         />
       </div>
     );
