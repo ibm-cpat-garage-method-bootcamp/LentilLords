@@ -58,10 +58,13 @@ class UIShellBody extends Component {
       let newList = this.state.groceryList;
     const newItem = {name: this.state.newItem, quantity: 1};
 
+
+
     if(this.state.newItem !== ''){
       newList.push(newItem);
-      this.setState({ groceryList: newList});
-  
+
+      this.setState({ groceryList: newList });
+
       axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
         .then(_ => {
           this.setState({newItem: ''})
@@ -77,7 +80,6 @@ class UIShellBody extends Component {
   handleDeleteItem(id) {
     console.log('im getting in the delete function')
     let tempState = this.state.dummyData
-    let nextIdx = id+1
       tempState.splice(id, 1)
       this.setState({ dummyData: tempState })
       }

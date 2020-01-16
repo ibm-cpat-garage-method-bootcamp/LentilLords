@@ -79,7 +79,7 @@ class SimpleList extends Component {
             </StructuredListWrapper>
             <form onSubmit={this.props.handleItemSubmit}>
               <div class="bx--form-item">
-                <label className="bx--label">
+                <label>
                   <div class="bx--form-item">
                     <input
                       type="text"
