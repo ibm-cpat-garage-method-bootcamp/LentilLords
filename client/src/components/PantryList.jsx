@@ -16,11 +16,12 @@ class SimpleList extends Component {
 
   onRowClick = id => {
     // this.setState({ selectedRow: id });
+    console.log(id);
   };
 
   renderRow = (row, id) => {
     return (
-      <StructuredListRow key={id} onClick={() => this.onRowClick(id)}>
+      <StructuredListRow key={id}>
         <div>
           <StructuredListInput
             id={`row-${id}`}
@@ -30,7 +31,7 @@ class SimpleList extends Component {
             //defaultChecked={this.state.selectedRow === id}
             // checked={this.state.selectedRow === id}
           />
-          <StructuredListCell>
+          <StructuredListCell onClick={() => this.onRowClick(row)}>
             <Icon
               className="bx--structured-list-svg"
               icon={iconCheckmarkSolid}
@@ -48,7 +49,7 @@ class SimpleList extends Component {
 
   render() {
     const {groceryList, dummyData} = this.props
-    const data = dummyData;
+    const data = groceryList;
     return (
       <div className="bx--grid pattern-container">
         <Header
