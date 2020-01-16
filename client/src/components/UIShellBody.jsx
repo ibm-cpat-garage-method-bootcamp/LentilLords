@@ -10,30 +10,8 @@ class UIShellBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      groceryList: ['Milk', 'Eggs', 'Potatoes', 'Kale'],
-      newItem: '',
-      dummyData: [
-        {
-            name: 'Milk',
-            quantity: 2,
-            selected: false
-        },
-        {
-            name: 'Eggs',
-            quantity: 0,
-            selected: false
-        },
-        {
-            name: 'Potatoes',
-            quantity: 0,
-            selected: false
-        },
-        {
-            name: 'Kale',
-            quantity: 9000,
-            selected: false
-        }
-    ]
+      groceryList: [],
+      newItem: ''
     };
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.handleItemChange = this.handleItemChange.bind(this);
@@ -47,6 +25,7 @@ class UIShellBody extends Component {
   componentDidMount(){
     axios.get('http://localhost:3001/groceryList').then(res => {
       console.log("This is makign the api call", res.data)
+
       this.setState({groceryList: res.data})
     })
   }
@@ -54,7 +33,8 @@ class UIShellBody extends Component {
   handleItemSubmit(event) {
     event.preventDefault();
     let newList = this.state.groceryList;
-    newList.push(this.state.newItem);
+    const newItem = {name: this.state.newItem, quantity: 1};
+    newList.push(newItem);
     this.setState({ groceryList: newList});
 
     axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})

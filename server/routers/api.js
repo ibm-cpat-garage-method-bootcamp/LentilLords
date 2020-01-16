@@ -4,9 +4,7 @@ const cors = require('cors')
 
 const apiHost = process.env.API_HOST || 'localhost:3001';
 
-const storage = []
-
-
+let storage = []
 
 module.exports = function(app){
   app.use(cors());
@@ -14,9 +12,23 @@ module.exports = function(app){
 
   app.post('/storing', (req, res) => {
     let item = req.body.newItem
-    storage.push(item)
-    console.log(storage)
+    let quantity = req.body.quantity || 1
+    
+      storage.push({
+        'name': item,
+        'quantity': quantity
+      })
+
     res.end()
+  })
+
+  app.post('/delete', (req, res) => {
+    let items = req.body.data.split(",")
+
+    storage = storage.filter(item => {
+      return !items.includes(item.name)
+    });
+    res.send('Deleted!')
   })
 
   app.get('/groceryList', (req, res) => {
