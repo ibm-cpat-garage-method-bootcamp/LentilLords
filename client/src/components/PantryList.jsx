@@ -13,11 +13,9 @@ import Header from '../pattern-components/Header';
 import '../pattern-components/patterns.scss';
 
 class SimpleList extends Component {
-
   // onRowClick = id => {
   //   this.setState({ selectedRow: id });
   //   console.log(id);
-
   // };
 
   renderRow = (row, id) => {
@@ -32,7 +30,9 @@ class SimpleList extends Component {
             //defaultChecked={this.state.selectedRow === id}
             // checked={this.state.selectedRow === id}
           />
-          <StructuredListCell onClick={() => this.props.handleDeleteItem(id)}>
+          <StructuredListCell
+            onClick={() => this.props.handleDeleteItem(id, row)}
+          >
             <Icon
               className="bx--structured-list-svg"
               icon={iconCheckmarkSolid}
@@ -44,15 +44,14 @@ class SimpleList extends Component {
         <StructuredListCell className="simple-list-row">
           {row}
         </StructuredListCell>
-           {/* <div><button type="button" onclick={() => this.props.handleDeleteItem(row)}>Delete</button> 
+        {/* <div><button type="button" onclick={() => this.props.handleDeleteItem(row)}>Delete</button> 
            </div> */}
-
       </StructuredListRow>
     );
   };
 
   render() {
-    const {groceryList} = this.props
+    const { groceryList } = this.props;
     const data = groceryList;
     return (
       <div className="bx--grid pattern-container">
