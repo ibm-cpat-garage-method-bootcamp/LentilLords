@@ -13,11 +13,13 @@ module.exports = function(app){
   app.post('/storing', (req, res) => {
     let item = req.body.newItem
     let quantity = req.body.quantity || 1
-    
+
+    if(item !== ''){
       storage.push({
         'name': item,
         'quantity': quantity
       })
+    }
 
     res.end()
   })

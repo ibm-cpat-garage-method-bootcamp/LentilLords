@@ -51,14 +51,17 @@ class UIShellBody extends Component {
     event.preventDefault();
     let newList = this.state.groceryList;
     const newItem = {name: this.state.newItem, quantity: 1};
-    newList.push(newItem);
-    this.setState({ groceryList: newList});
 
-    axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
-      .then(_ => {
-        console.log('OI: Successfully posted to /storing :)')
-        this.setState({newItem: ''})
-      })
+    if(this.state.newItem !== ''){
+      newList.push(newItem);
+      this.setState({ groceryList: newList});
+  
+      axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
+        .then(_ => {
+          this.setState({newItem: ''})
+        })
+    }
+    
   }
 
   handleItemChange(event) {
