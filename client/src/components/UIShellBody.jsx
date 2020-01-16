@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import SimpleList from "../pattern-components/SimpleList";
 import BasicPage from "../pattern-components/BasicPage";
 import PantryList from "./PantryList";
-<<<<<<< HEAD
 import ShoppingList from "./ShoppingList"
-=======
 import axios from 'axios';
->>>>>>> sa_ts
 import "../pattern-components/patterns.scss";
 
 class UIShellBody extends Component {
