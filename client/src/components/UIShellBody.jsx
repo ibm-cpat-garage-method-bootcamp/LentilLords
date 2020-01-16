@@ -11,7 +11,29 @@ class UIShellBody extends Component {
     super(props);
     this.state = {
       groceryList: ['Milk', 'Eggs', 'Potatoes', 'Kale'],
-      newItem: ''
+      newItem: '',
+      dummyData: [
+        {
+            name: 'Milk',
+            quantity: 2,
+            selected: false
+        },
+        {
+            name: 'Eggs',
+            quantity: 0,
+            selected: false
+        },
+        {
+            name: 'Potatoes',
+            quantity: 0,
+            selected: false
+        },
+        {
+            name: 'Kale',
+            quantity: 9000,
+            selected: false
+        }
+    ]
     };
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.handleItemChange = this.handleItemChange.bind(this);
@@ -53,6 +75,7 @@ class UIShellBody extends Component {
       <div className="pattern-container">
         <PantryList 
           groceryList={this.state.groceryList}
+          dummyData={this.state.dummyData}
           newItem={this.state.newItem}
           handleItemSubmit={this.handleItemSubmit}
           handleItemChange={this.handleItemChange}

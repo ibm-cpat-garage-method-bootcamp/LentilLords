@@ -39,14 +39,16 @@ class SimpleList extends Component {
         </div>
 
         <StructuredListCell className="simple-list-row">
-          {row}
+          {row.name}
         </StructuredListCell>
+
       </StructuredListRow>
     );
   };
 
   render() {
-    const data = this.props.groceryList;
+    // const data = this.props.groceryList;
+    const data = this.props.dummyData;
     return (
       <div className="bx--grid pattern-container">
         <Header
