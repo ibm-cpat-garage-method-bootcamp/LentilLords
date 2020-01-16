@@ -39,7 +39,7 @@ class SimpleList extends Component {
         </div>
 
         <StructuredListCell className="simple-list-row">
-          {row.name}
+          {row}
         </StructuredListCell>
 
       </StructuredListRow>
@@ -48,6 +48,9 @@ class SimpleList extends Component {
 
   render() {
     let data = this.props.groceryList;
+    // for (let item of data){
+    //   console.log(item.name)
+    // }
     return (
       <div className="bx--grid pattern-container">
         <Header
@@ -66,6 +69,7 @@ class SimpleList extends Component {
 
               <StructuredListBody>
                 {data.map((row, i) => {
+                  console.log(row.name);
                   return this.renderRow(row.name, i);
                 })}
               </StructuredListBody>
