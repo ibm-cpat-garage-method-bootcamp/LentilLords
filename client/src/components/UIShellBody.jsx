@@ -55,18 +55,9 @@ class UIShellBody extends Component {
 
   handleItemSubmit(event) {
     event.preventDefault();
-    // if (this.state.newItem !== '') {
       let newList = this.state.groceryList;
     const newItem = {name: this.state.newItem, quantity: 1};
 
-<<<<<<< HEAD
-    axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
-      .then(_ => {
-        console.log('OI: Successfully posted to /storing :)')
-        this.setState({newItem: ''})
-      })
-    // }
-=======
     if(this.state.newItem !== ''){
       newList.push(newItem);
       this.setState({ groceryList: newList});
@@ -77,7 +68,6 @@ class UIShellBody extends Component {
         })
     }
     
->>>>>>> a0f2e1eb9581480709c9148783b023052bd67220
   }
 
   handleItemChange(event) {
@@ -87,15 +77,13 @@ class UIShellBody extends Component {
   handleDeleteItem(id) {
     console.log('im getting in the delete function')
     let tempState = this.state.dummyData
-    for(let i = 0; i < tempState.length; i++) {
-      if( id === tempState[i].name) {
-        console.log(tempState[i].name)
-        
-        console.log('im trying to delete')
+    let nextIdx = id+1
+      tempState.splice(id, 1)
+      this.setState({ dummyData: tempState })
       }
 
-    }
-  }
+    
+  
   onRowClick = id => {
     this.setState({ selectedRow: id });
     console.log(id);

@@ -32,7 +32,7 @@ class SimpleList extends Component {
             //defaultChecked={this.state.selectedRow === id}
             // checked={this.state.selectedRow === id}
           />
-          <StructuredListCell onClick={() => this.props.handleDeleteItem(row)}>
+          <StructuredListCell onClick={() => this.props.handleDeleteItem(id)}>
             <Icon
               className="bx--structured-list-svg"
               icon={iconCheckmarkSolid}
