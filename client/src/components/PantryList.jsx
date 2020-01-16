@@ -8,7 +8,7 @@ import {
   StructuredListInput,
   Icon
 } from 'carbon-components-react';
-import { iconCheckmarkSolid } from 'carbon-icons';
+import { iconClose } from 'carbon-icons';
 import Header from '../pattern-components/Header';
 import '../pattern-components/patterns.scss';
 
@@ -35,7 +35,7 @@ class SimpleList extends Component {
           <StructuredListCell onClick={() => this.props.handleDeleteItem(id)}>
             <Icon
               className="bx--structured-list-svg"
-              icon={iconCheckmarkSolid}
+              icon={iconClose}
               // onclick={() => this.props.handleDeleteItem(row)}
             />
           </StructuredListCell>
