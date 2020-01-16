@@ -16,17 +16,20 @@ class UIShellBody extends Component {
         {
           name: "Toasted Eggs",
           quantity: 1,
-          selected: false
+          selected: false,
+          aisle: 1
         },
         {
           name: "Fried Milk",
           quantity: 0,
-          selected: false
+          selected: false,
+          aisle: 4
         },
         {
           name: "Candied Steak",
           quantity: 0,
-          selected: false
+          selected: false,
+          aisle: 7
         }
       ],
       selected: []
@@ -55,15 +58,26 @@ class UIShellBody extends Component {
     // if (this.state.newItem !== '') {
       let newList = this.state.groceryList;
     const newItem = {name: this.state.newItem, quantity: 1};
-    newList.push(newItem);
-    this.setState({ groceryList: newList});
 
+<<<<<<< HEAD
     axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
       .then(_ => {
         console.log('OI: Successfully posted to /storing :)')
         this.setState({newItem: ''})
       })
     // }
+=======
+    if(this.state.newItem !== ''){
+      newList.push(newItem);
+      this.setState({ groceryList: newList});
+  
+      axios.post('http://localhost:3001/storing', {newItem: this.state.newItem})
+        .then(_ => {
+          this.setState({newItem: ''})
+        })
+    }
+    
+>>>>>>> a0f2e1eb9581480709c9148783b023052bd67220
   }
 
   handleItemChange(event) {
