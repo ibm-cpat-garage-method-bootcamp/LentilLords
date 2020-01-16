@@ -28,10 +28,13 @@ class UIShellBody extends Component {
           quantity: 0,
           selected: false
         }
-      ]
+      ],
+      selected: []
     };
     this.handleItemSubmit = this.handleItemSubmit.bind(this);
     this.handleItemChange = this.handleItemChange.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
   components = {
     "Simple List": SimpleList,
@@ -49,7 +52,8 @@ class UIShellBody extends Component {
 
   handleItemSubmit(event) {
     event.preventDefault();
-    let newList = this.state.groceryList;
+    // if (this.state.newItem !== '') {
+      let newList = this.state.groceryList;
     const newItem = {name: this.state.newItem, quantity: 1};
     newList.push(newItem);
     this.setState({ groceryList: newList});
@@ -59,11 +63,30 @@ class UIShellBody extends Component {
         console.log('OI: Successfully posted to /storing :)')
         this.setState({newItem: ''})
       })
+    // }
   }
 
   handleItemChange(event) {
     this.setState({ newItem: event.target.value });
   }
+
+  handleDeleteItem(id) {
+    console.log('im getting in the delete function')
+    let tempState = this.state.dummyData
+    for(let i = 0; i < tempState.length; i++) {
+      if( id === tempState[i].name) {
+        console.log(tempState[i].name)
+        
+        console.log('im trying to delete')
+      }
+
+    }
+  }
+  onRowClick = id => {
+    this.setState({ selectedRow: id });
+    console.log(id);
+    
+  };
 
   render() {
     let curScreen = this.defaultComponent;
@@ -76,6 +99,8 @@ class UIShellBody extends Component {
           newItem={this.state.newItem}
           handleItemSubmit={this.handleItemSubmit}
           handleItemChange={this.handleItemChange}
+          handleDeleteItem={this.handleDeleteItem}
+          onRowClick ={this.onRowClick}
         />
         <ShoppingList
           groceryList={this.state.groceryList}

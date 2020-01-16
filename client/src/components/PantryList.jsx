@@ -14,10 +14,11 @@ import '../pattern-components/patterns.scss';
 
 class SimpleList extends Component {
 
-  onRowClick = id => {
-    // this.setState({ selectedRow: id });
-    console.log(id);
-  };
+  // onRowClick = id => {
+  //   this.setState({ selectedRow: id });
+  //   console.log(id);
+
+  // };
 
   renderRow = (row, id) => {
     return (
@@ -31,10 +32,11 @@ class SimpleList extends Component {
             //defaultChecked={this.state.selectedRow === id}
             // checked={this.state.selectedRow === id}
           />
-          <StructuredListCell onClick={() => this.onRowClick(row)}>
+          <StructuredListCell onClick={() => this.props.handleDeleteItem(row)}>
             <Icon
               className="bx--structured-list-svg"
               icon={iconCheckmarkSolid}
+              // onclick={() => this.props.handleDeleteItem(row)}
             />
           </StructuredListCell>
         </div>
@@ -42,6 +44,8 @@ class SimpleList extends Component {
         <StructuredListCell className="simple-list-row">
           {row}
         </StructuredListCell>
+           {/* <div><button type="button" onclick={() => this.props.handleDeleteItem(row)}>Delete</button> 
+           </div> */}
 
       </StructuredListRow>
     );
@@ -49,7 +53,7 @@ class SimpleList extends Component {
 
   render() {
     const {groceryList, dummyData} = this.props
-    const data = groceryList;
+    const data = dummyData;
     return (
       <div className="bx--grid pattern-container">
         <Header
@@ -68,7 +72,7 @@ class SimpleList extends Component {
 
               <StructuredListBody>
                 {data.map((row, i) => {
-                  console.log(row.name);
+                  // console.log(row.name);
                   return this.renderRow(row.name, i);
                 })}
               </StructuredListBody>
