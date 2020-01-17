@@ -74,7 +74,7 @@ class UIShellBody extends Component {
       this.setState({ groceryList: newList });
 
       axios
-        .post('http://localhost:3001/storing', { newItem: this.state.newItem })
+        .post('http://localhost:3001/storing', { newItem: newItem })
         .then(_ => {
           this.setState({ newItem: '' });
         });

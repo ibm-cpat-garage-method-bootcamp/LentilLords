@@ -12,12 +12,14 @@ module.exports = function(app) {
 
   app.post('/storing', (req, res) => {
     let item = req.body.newItem;
-    let quantity = req.body.quantity || 1;
+    let quantity = req.body.quantity;
+    let aisle = req.body.aisle;
 
     if (item !== '') {
       storage.push({
-        name: item,
-        quantity: quantity
+        name: item.name,
+        quantity: item.quantity,
+        aisle: item.aisle
       });
     }
 
