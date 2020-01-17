@@ -59,7 +59,7 @@ class UIShellBody extends Component {
     const newList = this.state.groceryList;
     let zeroOrOne = Math.round(Math.random()); // Quantity becomes 0 or 1, randomly...
 
-    let aisleValue = Math.floor(Math.random() * 100) + 1; // Quantity becomes between 0 and 100
+    let aisleValue = Math.floor(Math.random() * 20) + 1; // Quantity becomes between 0 and 100
 
     const newItem = {
       name: this.state.newItem,
